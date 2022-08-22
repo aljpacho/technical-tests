@@ -20,7 +20,6 @@ Scrabble game
 #  Make tile bag
 """Have distribution of letters to generate an unshuffled bag"""
 def bag_of_tiles():
-    bag = []
     # dicitonary with the distrubution of letters
     letter_tiles = {
         'e': 12,
@@ -29,18 +28,19 @@ def bag_of_tiles():
         'n': 6, 'r': 6, 't': 6,
         'l': 4, 's': 4, 'u': 4, 'd': 4,
         'g': 3,
-        'b': 2, 'c':2, 'm': 2, 'p': 2, 'f': 2, 'h':2, 'v': 2, '2':2, 'y':2,
+        'b': 2, 'c':2, 'm': 2, 'p': 2, 'f': 2, 'h':2, 'v': 2, 'w':2, 'y':2,
         'k': 1, 'j': 1, 'x': 1, 'q': 1, 'z': 1
     }
-
     # for loop or list comp to make bag and append to list
-
+    bag = [key for key, value in letter_tiles.items() for _ in range(value)]
+    return bag
 
 # Tile scoring system
 """Dictionary with points as values for letter keys"""
 
 # Play function 
 def play():
+    print(bag_of_tiles())
     # generate bag
     # shuffle bag
     # assign tiles to rack and remove tiles from bag
