@@ -17,7 +17,9 @@ Scrabble game
 """
 
 import random
+import re
 
+DICTIONARY_FILE = "dictionary.txt"
 
 
 #  Make tile bag
@@ -56,10 +58,10 @@ def player_turn(player_rack):
 
     if validate_input(user_input_lower, player_rack):
         # define a function that check if the word is valid in the dictionary
-        check_dictionary(user_input_lower)
+        if check_dictionary(user_input_lower):
         # if valid word -> find the score
         # define function that gets the player score
-
+            print(get_score(user_input_lower))
         # remove used letters from rack
     
     else:
@@ -73,18 +75,20 @@ def validate_input(user_input_lower, player_rack):
 
 
 def check_dictionary(user_input_lower):
-    file = open("dictionary.txt")
+    # need to ensure that the **exact** word is found --> regex?
+    with open(DICTIONARY_FILE, 'r') as a:
+       for line in a:
+           line = line.rstrip()
+           if re.search(r"\b{}\b".format(user_input_lower),line):
+                print(f'{user_input_lower}: Valid word')
+                return True
+    print(f'{user_input_lower}: Invalid word')
+    return False
 
-    search_word = user_input_lower
-
-    if(search_word in file.read()):
-        print(f'{user_input_lower}: Valid word')
-    else:
-        print(f'{user_input_lower}: Invalid word')
 
 # Tile scoring system
 """Dictionary with points as values for letter keys"""
-def get_score(user_input_lower):
+def get_score(word):
     tile_points = {
         'e':1 ,'a':1, 'i':1, 'o':1, 'n':1, 'r':1, 't':1, 'l':1, 's':1, 'u':1,
         'd':2,'g':2,
@@ -94,6 +98,12 @@ def get_score(user_input_lower):
         'j':8, 'x':8, 
         'q':10, 'z':10
     }
+    score = 0
+
+    for char in word:
+        score += tile_points[char]
+    
+    return score
 
 
 # Play function 
