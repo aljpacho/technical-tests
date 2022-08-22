@@ -44,6 +44,9 @@ def generate_bag():
 
 # players go
 def player_turn(player_rack):
+    # players turn should return a rack and a score for their input
+    # score should be added to a variable --> play function
+    # rack should be checked and updated per go --> play function
     print(f'This is your rack: {player_rack}')
     
     user_input = input('Input a word using the tiles in your rack: ')
@@ -57,6 +60,9 @@ def player_turn(player_rack):
     if validate_input(user_input_lower, player_rack):
         # define a function that check if the word is valid in the dictionary
         check_dictionary(user_input_lower)
+        # if valid word -> find the score
+
+        # remove used letters from rack
     
     else:
         player_turn(player_rack)
@@ -77,8 +83,6 @@ def check_dictionary(user_input_lower):
         print(f'{user_input_lower}: Valid word')
     else:
         print(f'{user_input_lower}: Invalid word')
-
-
 
 
 
