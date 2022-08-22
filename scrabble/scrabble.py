@@ -14,3 +14,21 @@ Scrabble game
 **repeat steps**
 6) If bag is empty and the player has attempted a word 3 times --> check if they want to continue or end game
 """
+
+
+#  Make tile bag
+"""Have distribution of letters to generate an unshuffled bag"""
+
+
+
+# Tile scoring system
+"""Dictionary with points as values for letter keys"""
+
+# Play function 
+def play():
+    # generate bag
+    # shuffle bag
+    # assign tiles to rack and remove tiles from bag
+    return True
+
+play()
