@@ -44,7 +44,20 @@ def generate_bag():
 
 # players go
 def player_turn(player_rack):
-    print(player_rack)
+    valid_letters = set(player_rack)
+
+    # print(valid_letters)
+
+    print(f'This is your rack: {player_rack}')
+
+    user_input = input('Input a word using the tiles in your rack: ')
+
+    # control flow to check if the user only uses tiles in their rack
+
+    # use a set to check against
+    
+
+    # define a function that check if the word is valid in the dictionary
 
 # Play function 
 def play():
