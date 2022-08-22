@@ -54,7 +54,7 @@ def player_turn(player_rack):
     # control flow to check if the user only uses tiles in their rack
     # use a set to check against
 
-    print(f'Your word is: {user_input_lower}. Checking dictionary')
+    # need to have an option to skip go?
 
     if validate_input(user_input_lower, player_rack):
         # define a function that check if the word is valid in the dictionary
@@ -62,11 +62,12 @@ def player_turn(player_rack):
         # if valid word -> find the score
         # define function that gets the player score
             print(get_score(user_input_lower))
+        else: player_turn(player_rack)
         # remove used letters from rack
-    
-    else:
-        player_turn(player_rack)
 
+    else:
+        print('Invalid input. Try again...')
+        player_turn(player_rack)
 
 
 
@@ -80,9 +81,9 @@ def check_dictionary(user_input_lower):
        for line in a:
            line = line.rstrip()
            if re.search(r"\b{}\b".format(user_input_lower),line):
-                print(f'{user_input_lower}: Valid word')
+                print(f'Valid word: {user_input_lower}:')
                 return True
-    print(f'{user_input_lower}: Invalid word')
+    print(f'Invalid word: {user_input_lower}')
     return False
 
 
