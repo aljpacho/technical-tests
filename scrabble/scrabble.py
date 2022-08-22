@@ -16,10 +16,13 @@ Scrabble game
 6) If bag is empty and the player has attempted a word 3 times --> check if they want to continue or end game
 """
 
+import random
+
+
 
 #  Make tile bag
 """Have distribution of letters to generate an unshuffled bag"""
-def bag_of_tiles():
+def generate_bag():
     # dicitonary with the distrubution of letters
     letter_tiles = {
         'e': 12,
@@ -40,9 +43,12 @@ def bag_of_tiles():
 
 # Play function 
 def play():
-    print(bag_of_tiles())
-    # generate bag
+     # generate bag
+    shuffled_tile_bag = generate_bag()
+    # print(generate_bag())
     # shuffle bag
+    random.shuffle(shuffled_tile_bag)
+    print(shuffled_tile_bag)
     # assign tiles to rack and remove tiles from bag
     return True
 
