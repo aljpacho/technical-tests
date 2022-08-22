@@ -48,8 +48,16 @@ def play():
     # print(generate_bag())
     # shuffle bag
     random.shuffle(shuffled_tile_bag)
-    print(shuffled_tile_bag)
+    # print(shuffled_tile_bag)
+
     # assign tiles to rack and remove tiles from bag
+
+    player_rack = []
+    for i in range(7):
+        player_rack.append(shuffled_tile_bag.pop(0))
+    
+    print (player_rack)
+
     return True
 
 play()
