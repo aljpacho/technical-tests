@@ -155,3 +155,6 @@ def play():
     return True
 
 play()
+
+
+"""Finished up to challenge 5"""
