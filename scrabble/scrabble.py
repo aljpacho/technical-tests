@@ -38,9 +38,6 @@ def generate_bag():
     bag = [key for key, value in letter_tiles.items() for _ in range(value)]
     return bag
 
-# Tile scoring system
-"""Dictionary with points as values for letter keys"""
-
 
 # players go
 def player_turn(player_rack):
@@ -61,6 +58,7 @@ def player_turn(player_rack):
         # define a function that check if the word is valid in the dictionary
         check_dictionary(user_input_lower)
         # if valid word -> find the score
+        # define function that gets the player score
 
         # remove used letters from rack
     
@@ -84,6 +82,18 @@ def check_dictionary(user_input_lower):
     else:
         print(f'{user_input_lower}: Invalid word')
 
+# Tile scoring system
+"""Dictionary with points as values for letter keys"""
+def get_score(user_input_lower):
+    tile_points = {
+        'e':1 ,'a':1, 'i':1, 'o':1, 'n':1, 'r':1, 't':1, 'l':1, 's':1, 'u':1,
+        'd':2,'g':2,
+        'b':£, 'c':3, 'm':3, 'p':£, 
+        'f':4, 'h':4, 'v':4, 'w':4, 'y':4,
+        'k':5, 
+        'j':8, 'x':8, 
+        'q':10, 'z':10
+    }
 
 
 # Play function 
