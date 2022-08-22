@@ -16,6 +16,7 @@ Scrabble game
 6) If bag is empty and the player has attempted a word 3 times --> check if they want to continue or end game
 """
 
+from operator import inv
 import random
 import re
 
@@ -42,7 +43,13 @@ def generate_bag():
 
 
 # players go
-def player_turn(player_rack):
+def player_turn(player_rack, guesses):
+    # if player guesses invalid add to counter
+    guesses
+
+    if skip_turn(guesses):
+        print('Skip turn works')
+   
     # players turn should return a rack and a score for their input
     # score should be added to a variable --> play function
     # rack should be checked and updated per go --> play function
@@ -62,13 +69,26 @@ def player_turn(player_rack):
         # if valid word -> find the score
         # define function that gets the player score
             print(get_score(user_input_lower))
-        else: player_turn(player_rack)
+        else: 
+            guesses += 1
+            player_turn(player_rack, guesses)
         # remove used letters from rack
 
     else:
         print('Invalid input. Try again...')
         player_turn(player_rack)
 
+# function to check if the player wants to skip
+def skip_turn(invalid_guess_counter):
+    if invalid_guess_counter >= 3:
+            user_action = input('You have guessed 3 invalid words. Do you want to skip your turn? (Y/N)')
+            if user_action.lower() == 'y':
+                return True
+            elif user_action.lower() == 'n':
+                return False
+            else:
+                skip_turn(invalid_guess_counter)
+    else: return False
 
 
 def validate_input(user_input_lower, player_rack):
@@ -85,6 +105,13 @@ def check_dictionary(user_input_lower):
                 return True
     print(f'Invalid word: {user_input_lower}')
     return False
+
+# Longest possible word
+# def longest_word():
+
+
+# Highest scoring word possible 
+# def highest_scoring_word():
 
 
 # Tile scoring system
@@ -123,7 +150,7 @@ def play():
         player_rack.append(shuffled_tile_bag.pop(0))
     
     # players go --> need player input
-    player_turn(player_rack)
+    player_turn(player_rack, 0)
 
     return True
 
