@@ -44,30 +44,29 @@ def generate_bag():
 
 # players go
 def player_turn(player_rack):
-    # valid_letters = set(player_rack)
-
-    # print(valid_letters)
-
     print(f'This is your rack: {player_rack}')
-
+    
     user_input = input('Input a word using the tiles in your rack: ')
-
     user_input_lower = user_input.lower()
+
+    # control flow to check if the user only uses tiles in their rack
+    # use a set to check against
 
     if validate_input(user_input_lower, player_rack):
         print('Y')
     else:
-        print('N')
-
-    # control flow to check if the user only uses tiles in their rack
-
-    # use a set to check against
-    
+        player_turn(player_rack)
 
     # define a function that check if the word is valid in the dictionary
 
 def validate_input(user_input_lower, player_rack):
     return set(player_rack).issuperset(user_input_lower)
+
+
+
+
+
+
 
 # Play function 
 def play():
@@ -84,7 +83,6 @@ def play():
     for i in range(7):
         player_rack.append(shuffled_tile_bag.pop(0))
     
-
     # players go --> need player input
     player_turn(player_rack)
 
