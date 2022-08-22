@@ -6,6 +6,7 @@ Scrabble game
 3) Assign tiles to rack
 4) Players go
     - user input
+        * ensure all letters are lowercase when searching in dictionary
     - get score if valid
     -return player word and score
     -return longest possible word from chars in rack
@@ -18,7 +19,21 @@ Scrabble game
 
 #  Make tile bag
 """Have distribution of letters to generate an unshuffled bag"""
+def bag_of_tiles():
+    bag = []
+    # dicitonary with the distrubution of letters
+    letter_tiles = {
+        'e': 12,
+        'a': 9, 'i': 9,
+        'o': 8, 
+        'n': 6, 'r': 6, 't': 6,
+        'l': 4, 's': 4, 'u': 4, 'd': 4,
+        'g': 3,
+        'b': 2, 'c':2, 'm': 2, 'p': 2, 'f': 2, 'h':2, 'v': 2, '2':2, 'y':2,
+        'k': 1, 'j': 1, 'x': 1, 'q': 1, 'z': 1
+    }
 
+    # for loop or list comp to make bag and append to list
 
 
 # Tile scoring system
