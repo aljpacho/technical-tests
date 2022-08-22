@@ -16,7 +16,6 @@ Scrabble game
 6) If bag is empty and the player has attempted a word 3 times --> check if they want to continue or end game
 """
 
-from operator import inv
 import random
 import re
 
@@ -26,7 +25,7 @@ DICTIONARY_FILE = "dictionary.txt"
 #  Make tile bag
 """Have distribution of letters to generate an unshuffled bag"""
 def generate_bag():
-    # dicitonary with the distrubution of letters
+    # dictionary with the distribution of letters
     letter_tiles = {
         'e': 12,
         'a': 9, 'i': 9,
@@ -134,7 +133,9 @@ def get_score(word):
     return score
 
 
-# Play function 
+# Play function
+# Function to add more tiles to rack after player turn --> needs to be separate to first assign
+# while loop to check if the bag is empty --> once bag is empty allow player to guess several times before ending game --> added functionality to the skip turn ? or new function called end_game() 
 def play():
      # generate bag
     shuffled_tile_bag = generate_bag()
@@ -144,7 +145,6 @@ def play():
     # print(shuffled_tile_bag)
 
     # assign tiles to rack and remove tiles from bag
-
     player_rack = []
     for i in range(7):
         player_rack.append(shuffled_tile_bag.pop(0))
