@@ -41,6 +41,11 @@ def generate_bag():
 # Tile scoring system
 """Dictionary with points as values for letter keys"""
 
+
+# players go
+def player_turn(player_rack):
+    print(player_rack)
+
 # Play function 
 def play():
      # generate bag
@@ -56,7 +61,9 @@ def play():
     for i in range(7):
         player_rack.append(shuffled_tile_bag.pop(0))
     
-    print (player_rack)
+
+    # players go --> need player input
+    player_turn(player_rack)
 
     return True
 
