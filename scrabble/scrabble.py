@@ -52,17 +52,31 @@ def player_turn(player_rack):
     # control flow to check if the user only uses tiles in their rack
     # use a set to check against
 
+    print(f'Your word is: {user_input_lower}. Checking dictionary')
+
     if validate_input(user_input_lower, player_rack):
-        print('Y')
+        # define a function that check if the word is valid in the dictionary
+        check_dictionary(user_input_lower)
+    
     else:
         player_turn(player_rack)
 
-    # define a function that check if the word is valid in the dictionary
+
+
 
 def validate_input(user_input_lower, player_rack):
     return set(player_rack).issuperset(user_input_lower)
 
 
+def check_dictionary(user_input_lower):
+    file = open("dictionary.txt")
+
+    search_word = user_input_lower
+
+    if(search_word in file.read()):
+        print(f'{user_input_lower}: Valid word')
+    else:
+        print(f'{user_input_lower}: Invalid word')
 
 
 
